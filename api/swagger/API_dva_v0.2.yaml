@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  description: >-
+    This API returns Trailer details for DVA.
+  version: 1.0.0
+  title: 'DVA(NI) Micorservice'
+  termsOfService: ''
+  contact:
+    email: 'ujaffer@deloitte.co.uk'
+  license:
+    name: 'Apache 2.0'
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+paths:
+  /{trailerId}:
+    get:
+      parameters: 
+        - in: path
+          name: trailerId
+          required: true
+          schema:
+            type: string
+          description: 'trailer id'
+      tags:
+        - 'trailer-details'
+      summary: 'Returns a single trailer.'
+      description: 'Returns a trailer for the provided Id.'
+      responses:
+        200:
+          description: 'a trailer based on the provided trailerId'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/trailerDetail'
+components:
+  schemas:
+     trailerDetail:
+      type: object
+      properties:
+        trailerId:
+          type: string
+          description: 'trailer Id'
+        make:
+          type: string
+          description: 'Make of the vehicle'
+        vin:
+          type: string
+          description: 'Model of the vehicle'
+        manufactureDate:
+          type: string
+          description: 'manufacture date'
+        bodyType:
+          type: string
+          description: 'body type'
+        authDate:
+          type: string
+          description: 'auth date'
+        axles:
+          type: string
+          description: 'axles'
+        region:
+          type: string
+          description: 'region'
+security:
+  - ApiKeyAuth: []
+  - OAuth2:
+      - read
+servers:
+  - url: 'https://url/api/v1'

@@ -1,0 +1,24 @@
+functions:
+- getTrailerDetails:
+    method: GET
+    path: /dva-trailer-details/{+proxy}
+    proxy: :trailerId
+    function: getTrailerDetails
+serverless:
+  basePath: /${BRANCH}
+  port: 3006
+endpoints:
+  local-global:
+    params:
+      apiVersion: '2015-03-31'
+      region: eu-west-1
+      endpoint: http://localhost:4000
+    functions:
+      getTrailerDetails:
+        name: ext-svc-global-dev-getTrailerDetails
+  remote:
+    params:
+      apiVersion: '2015-03-31'
+    functions:
+      getTrailerDetails:
+        name: dva-trailer-details-${BRANCH}
