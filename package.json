@@ -48,7 +48,7 @@
     "jest-plugin-context": "^2.9.0",
     "jest-sonar-reporter": "^2.0.0",
     "lambda-tester": "^3.5.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "nyc": "^14.1.1",
     "serverless": "^1.55.1",
     "serverless-offline": "^5.12.0",
